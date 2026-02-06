@@ -345,7 +345,6 @@ settings (independent, key-value store)
 - **bcryptjs 2.4.3**: Password hashing
 - **cors 2.8.5**: CORS middleware
 - **express-validator 7.0.1**: Input validation
-- **multer 1.4.5**: File uploads
 
 ### Database
 - **PostgreSQL 15+**: RDBMS

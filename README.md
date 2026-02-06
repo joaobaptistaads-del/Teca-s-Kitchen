@@ -5,6 +5,9 @@ Sistema completo de gestão de restaurante com frontend público e painel admini
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Node](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg)
 ![React](https://img.shields.io/badge/react-18.2.0-blue.svg)
+![Security](https://img.shields.io/badge/security-hardened-green.svg)
+
+> **Version 1.0.1** - Security-hardened release with all dependencies audited and patched.
 
 ## 📋 Visão Geral
 
