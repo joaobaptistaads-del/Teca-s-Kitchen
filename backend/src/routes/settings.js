@@ -7,6 +7,7 @@ import {
   deleteSetting
 } from '../controllers/settingsController.js';
 import { authMiddleware } from '../middleware/authMiddleware.js';
+import { writeLimiter } from '../middleware/rateLimiter.js';
 
 const router = express.Router();
 
@@ -15,8 +16,8 @@ router.get('/', getAllSettings);
 router.get('/:key', getSetting);
 
 // Protected routes (admin only)
-router.put('/batch', authMiddleware, updateMultipleSettings);
-router.put('/:key', authMiddleware, updateSetting);
-router.delete('/:key', authMiddleware, deleteSetting);
+router.put('/batch', authMiddleware, writeLimiter, updateMultipleSettings);
+router.put('/:key', authMiddleware, writeLimiter, updateSetting);
+router.delete('/:key', authMiddleware, writeLimiter, deleteSetting);
 
 export default router;

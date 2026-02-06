@@ -11,6 +11,7 @@ import {
 import { authMiddleware } from '../middleware/authMiddleware.js';
 import { validateRequest } from '../middleware/validateRequest.js';
 import { expenseValidation, uuidValidation } from '../utils/validation.js';
+import { writeLimiter } from '../middleware/rateLimiter.js';
 
 const router = express.Router();
 
@@ -20,9 +21,9 @@ router.use(authMiddleware);
 router.get('/expenses', getAllExpenses);
 router.get('/expenses/categories', getExpenseCategories);
 router.get('/expenses/:id', uuidValidation, validateRequest, getExpense);
-router.post('/expenses', expenseValidation, validateRequest, createExpense);
-router.put('/expenses/:id', authMiddleware, uuidValidation, validateRequest, updateExpense);
-router.delete('/expenses/:id', authMiddleware, uuidValidation, validateRequest, deleteExpense);
+router.post('/expenses', writeLimiter, expenseValidation, validateRequest, createExpense);
+router.put('/expenses/:id', writeLimiter, uuidValidation, validateRequest, updateExpense);
+router.delete('/expenses/:id', writeLimiter, uuidValidation, validateRequest, deleteExpense);
 router.get('/summary', getFinancialSummary);
 
 export default router;
